@@ -26,6 +26,8 @@ namespace Drawing
         public Vector2 Myrot;
         public Vector2 Mypos;
 
+        private Bitmap DahPicture;
+
         Vector2 Rotate(Vector2 aPoint, float aDegree)
         {
             
@@ -46,6 +48,9 @@ namespace Drawing
             Myrot.y = 1;
             Mypos.x = 100;
             Mypos.y = 100;
+
+            DahPicture = new Bitmap("./Pic.jpg");
+
             InitializeComponent();
         }
 
@@ -73,6 +78,18 @@ namespace Drawing
             //NestledSphereExample(g);
             g.FillEllipse(new SolidBrush(Color.Gray), Mypos.x, Mypos.y, 30, 30);
             g.DrawLine(new Pen(Color.Gray), Mypos.x + 15, Mypos.y+ 15,(Myrot.x * 100) + Mypos.x, (Myrot.y * 100) + Mypos.y);
+
+            //GDI text tutorial
+
+            Brush redBrush = new SolidBrush(Color.Red);
+            Font exampleFont = new Font("Times New Roman", 24);
+            g.DrawString("x = " + MousePosition.X + "  y = " + MousePosition.Y, exampleFont, redBrush, new Point(10, 10));
+
+            g.DrawImage(DahPicture, new Point(10, 10));
+
+            exampleFont.Dispose();
+            redBrush.Dispose();
+
             backgroundBrush.Dispose();
         }
 
